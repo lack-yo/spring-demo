@@ -86,7 +86,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.sumpay.pcc.dao;cn.sumpay.common.persist.dao;com.evlib.dao"/>
+        <property name="basePackage" value="com.lou.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
@@ -98,10 +98,9 @@
 
 
     <!-- 使用annotation定义事务 -->
-    <!--<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" order="2"/>
 
-     <!--&lt;!&ndash; 配置事务的传播特性 &ndash;&gt;-->
+     <!--&lt;!&ndash; 配置事务的传播特性，没有则添加一个事务 &ndash;&gt;-->
       <bean id="baseTransactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
             abstract="true">
           <property name="transactionManager" ref="transactionManager"/>
