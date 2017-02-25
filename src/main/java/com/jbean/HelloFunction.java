@@ -1,6 +1,7 @@
 package com.jbean;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 public class HelloFunction {
     @Autowired
     private HelloService helloService;
+    @Value("${number}")
+    private String number;
 
     public void useHello(){
-        System.out.println(helloService.sayHello("lily"));
+        System.out.println(helloService.sayHello("lily") + number);
     }
 }
